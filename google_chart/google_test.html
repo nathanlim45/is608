@@ -6,6 +6,9 @@
 
     <script type="text/javascript" src="jquery-2.2.3.js"></script>
     <script type="text/javascript" src="jquery.csv-0.71.js"></script>
+
+    <script type="text/javascript">google.load('visualization', '1', {'packages':['corechart']});</script>
+
 </head>
 
 <script type="text/javascript">
@@ -14,7 +17,7 @@
 
 function drawChart() {
 
-   $.get("presidents.csv", function(csvData) {
+   $.get("https://raw.githubusercontent.com/nathanlim45/is608/master/google_chart/presidents.csv", function(csvData) {
 
       var arrayData = $.csv.toArrays(csvData, {onParseValue: $.csv.hooks.castToScalar});
 

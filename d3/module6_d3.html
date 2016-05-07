@@ -60,7 +60,7 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0);
 
 
-d3.csv("presidents.csv", function(error, data) {
+d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/d3/presidents.csv", function(error, data) {
 
   data.forEach(function(d) {
     d.Height = +d.Height;
