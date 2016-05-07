@@ -2,12 +2,16 @@
 <head>
   <title>Google Chart</title>
 
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+ 
 
-    <script type="text/javascript" src="jquery-2.2.3.js"></script>
-    <script type="text/javascript" src="jquery.csv-0.71.js"></script>
+  <script src="jquery.csv-0.71.js"></script> 
 
-    <script type="text/javascript">google.load('visualization', '1', {'packages':['corechart']});</script>
+<script type="text/javascript">google.load('visualization', '1', {'packages':['corechart']});</script>
+
+  
 
 </head>
 
@@ -27,37 +31,41 @@ function drawChart() {
                   // A column for custom tooltip content
                   data.addColumn({name:'name', type:'string', role:'tooltip'});
 
-    var myArray = [];
+      var myArray = [];
+
     for (i = 1; i < arrayData.length; i++){
       myArray.push([arrayData[i][2], arrayData[i][1],arrayData[i][0]]);
     };
 
     data.addRows(myArray);
-    console.log(data);
-    var options = { title:'Presidents Weight and Height',
-                    hAxis: {title: 'Weight', 
-                            minValue: data.getColumnRange(0).min,
-                            maxValue: data.getColumnRange(0).max
-                          },
+
+    var options = { title:'Presidents Heights and Weights scatter plot',
                     vAxis: {title: 'Height', 
-                            minValue: data.getColumnRange(1).min, 
+                            minValue: data.getColumnRange(1).min,
                             maxValue: data.getColumnRange(1).max
+                          },
+                    hAxis: {title: 'Weight', 
+                            minValue: data.getColumnRange(0).min, 
+                            maxValue: data.getColumnRange(0).max
                           },
                     tooltip: { textStyle: {color:'#F0000'}
                              },  
                     legend: 'none'
-                 }
+                 };
 
 
 
-    var chart = new google.visualization.ScatterChart(document.getElementById('chart2'));
+    var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
     chart.draw(data, options);
+    console.log(document.getElementById('chart'))
     })
   };
-  drawChart();
+
+    drawChart();
+
     </script>
 
   <body>
-    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+        <div id='chart' style='height:600px;'></div>
   </body>
 </html>

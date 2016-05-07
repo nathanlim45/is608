@@ -26,23 +26,23 @@ body {
 }
 </style>
 <body>
-  <h2 align="center">  Presidents' Heights and Weights scatter plot</h2>
+  <h1>  Presidents' Heights and Weights scatter plot</h1>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script>
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 1000 - margin.left - margin.right,
+    width = 700 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 
 
-var xValue = function(d) { return d.Height;}, 
+var xValue = function(d) { return d.Weight;}, 
     xScale = d3.scale.linear().range([0, width]),
     xMap = function(d) { return xScale(xValue(d));},
     xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 
-var yValue = function(d) { return d.Weight;},
+var yValue = function(d) { return d.Height;},
     yScale = d3.scale.linear().range([height, 0]),
     yMap = function(d) { return yScale(yValue(d));}, 
     yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -82,7 +82,7 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/d3/presidents
       .attr("x", width)
       .attr("y", -6)
       .style("text-anchor", "end")
-      .text("Height");
+      .text("Weight");
 
 
   svg.append("g")
@@ -94,7 +94,7 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/d3/presidents
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Weight");
+      .text("Height");
 
 
   svg.selectAll(".dot")
