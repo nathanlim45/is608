@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+
+    <style> /* set the CSS */
+
+        body { font: 12px Arial;}
+            
+            path { 
+                stroke: steelblue;
+                stroke-width: 2;
+                fill: none;
+            }
+            
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: grey;
+                stroke-width: 1;
+                shape-rendering: crispEdges;
+            }
+            .legend {
+                font-size: 12px;
+                font-weight: bold;
+                text-align: left;
+            } 
+
+
+    </style>
+
+<h1> NET ODA by Country </h1>
+<p> This project to show ODA of each country </p>
+
+
+     <link href="d3-geomap/css/d3.geomap.css" rel="stylesheet">
+     <script src="d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
+     <script src="d3-geomap/js/d3.geomap.min.js"></script>
+
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="project_lim.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+    <!-- Checkboxes -->
+        <input name="filter_country" value="Albania" type="checkbox"
+               checked="checked">Albania</input>
+        <input name="filter_country" value="Bhutan" type="checkbox">Bhutan</input>
+        <input name="filter_country" value="Brazil" type="checkbox">Brazil</input> 
+        <input name="filter_country" value="China" type="checkbox">China</input> 
+        <input name="filter_country" value="Afghanistan" type="checkbox">Afghanistan</input> 
+        <input name="filter_country" value="Korea, Rep." type="checkbox">Korea, Rep.</input> 
+        <input name="filter_country" value="Thailand" type="checkbox">Thailand</input>
+        <input name="filter_country" value="Zimbabwe" type="checkbox">Zimbabwe</input>
+        <input type="submit" value="submit" onclick="DrawGraph();" />  
+        <div id="map"></div>
+</body>
+
+
+</html>
+
