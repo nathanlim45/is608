@@ -284,7 +284,7 @@ var format = function(d) {
 var map = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
     .colors(colorbrewer.YlGnBu[9])
-    .column('1985')
+    .column('Y1985')
     .format(format)
     .legend(true)
     .unitId('Country Code');
