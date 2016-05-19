@@ -1,11 +1,28 @@
 function DrawGraph(){
 
+
 d3.selectAll("svg").remove();
+
+var countries = new Array();
+
+    $(document).ready(function() {
+
+    $("#country option:selected").each(function() {
+       countries.push($(this).val());
+        });
+
+    });
+
+
+if (countries.length<1) {
+    alert("Select at least one country!!")}
+    else{
+
 
 
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 40, bottom: 30, left: 50};
-var width = 1000 - margin.left - margin.right;
+var width = 700 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
 // Set the ranges
@@ -35,12 +52,14 @@ var yAxis2 = d3.svg.axis().scale(y)
 // Define the line
 var net_odaline = d3.svg.line()
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.net_oda); });
+    .y(function(d) { return y(d.net_oda); })
+    ;
     
 
 var gdp_line = d3.svg.line()
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.GDP); });
+    .y(function(d) { return y(d.GDP); })
+    ;
 
 
 // Adds the svg canvas
@@ -53,15 +72,9 @@ var svg = d3.select("body")
               "translate(" + margin.left + "," + margin.top + ")");
 
 
-var countries = new Array();
 
-$(document).ready(function() {
 
-  $("input:checkbox[name=filter_country]:checked").each(function() {
-       countries.push($(this).val());
-  });
 
-});
 
 // Get the data
 d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/oda_data_cleaned.csv", function(data) {
@@ -248,28 +261,42 @@ var format = d3.format(",.2f");
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 var map = d3.geomap()
-    .geofile('d3-geomap/topojson/world/countries.json');
+    .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json');
 
 d3.select('#map')
     .call(map.draw, map);
 
+*/
+
+var format = function(d) {
+    d = d / 1000000;
+    return d3.format(',.02f')(d) + 'M';
+}
+
+
+var map = d3.geomap.choropleth()
+    .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
+//.colors(colorbrewer.YlGnBu[9])
+    .column('1985')
+    .format(format)
+    .legend(true)
+    .unitId('Country Code');
+
+d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/oda_received_dollar.csv', function(error, data) {
+    d3.select('#map')
+        .datum(data)
+        .call(map.draw, map);
+});
+
 
 };
+
+
+};
+
+
 
 
 
