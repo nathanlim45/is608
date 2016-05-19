@@ -114,7 +114,11 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/od
             .attr("class", "line")
             .style("stroke", function() {
                 return d.color = color(d.key); })
+            .style("stroke-opacity", 0.7)
             .attr("d", net_odaline(d.values));
+
+
+
 //legend
         svg.append("text")
         .attr("x", 30) // spacing
@@ -208,6 +212,7 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/GD
         .style("font-size","8px");
 
 
+
 /*
 
 //Grid line
@@ -278,13 +283,15 @@ var format = function(d) {
 
 var map = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
-//.colors(colorbrewer.YlGnBu[9])
+    .colors(colorbrewer.YlGnBu[9])
     .column('1985')
     .format(format)
     .legend(true)
     .unitId('Country Code');
 
-d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/oda_received_dollar.csv', function(error, data) {
+d3.csv('https://rawgit.com/nathanlim45/is608/master/final/data/oda_received_dollar.csv', function(error, data) {
+
+
     d3.select('#map')
         .datum(data)
         .call(map.draw, map);
