@@ -275,38 +275,56 @@ d3.select('#map')
 
 */
 
-var format = function(d) {
+
+
+
+
+};
+
+
+};
+
+
+
+
+function DrawMap(){
+
+
+
+var year = new Array();
+
+    $(document).ready(function() {
+
+    $("#YEAR option:selected").each(function() {
+       year.push($(this).val());
+        });
+
+    });
+
+
+    var format = function(d) {
     d = d / 1000000;
     return d3.format(',.02f')(d) + 'M';
 }
 
 
-var map = d3.geomap.choropleth()
+var worldmap = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
     .colors(colorbrewer.YlGnBu[9])
-    .column('Y1985')
+    .column(year)
     .format(format)
     .legend(true)
     .unitId('Country Code');
 
-d3.csv('https://rawgit.com/nathanlim45/is608/master/final/data/oda_received_dollar.csv', function(error, data) {
+d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/GDP.csv', function(error, data) {
 
 
     d3.select('#map')
         .datum(data)
-        .call(map.draw, map);
+        .call(worldmap.draw, worldmap);
 });
 
-
 };
-
-
-};
-
-
-
-
-
 
 
 

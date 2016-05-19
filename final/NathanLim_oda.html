@@ -20,6 +20,7 @@
                 stroke-width: 1;
                 shape-rendering: crispEdges;
             }
+
             .legend {
                 font-size: 12px;
                 font-weight: bold;
@@ -37,11 +38,12 @@
                 padding:5px;       
             }
 
-             #wrapper { 
-                margin-right: auto; 
-                margin-left: auto; 
-                width: 960px; 
+             #map_button { 
+                float:left;
+                margin-top: 20px; 
+                width: 20px; 
             } 
+
              #header { 
                 margin-right: 10px; 
                 margin-left: 10px; 
@@ -87,14 +89,14 @@
 
 <h1> NET ODA by Country </h1>
 <p> This project to show ODA of each country </p>
-
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <link href="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/css/d3.geomap.css" rel="stylesheet">
     <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
     <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/js/d3.geomap.min.js"></script>
 
-    <!-- why not <script src="http://d3js.org/d3.v3.min.js"></script>-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
     <script type="text/javascript" src="project_lim.js"></script>
 
 
@@ -105,7 +107,7 @@
 
 <div id="navigation">
 <div id="nav">
-<select multiple="" title="" class="" id="country" name="fm_fields[country][]">
+<select multiple="" title="" class="" id="country" name="oda_country">
 
 <option value="Afghanistan">Afghanistan</option>
 <option value="Albania">Albania</option>
@@ -357,14 +359,25 @@
 <option value="Zimbabwe">Zimbabwe</option>
 <input type="submit" value="Create Plot" id="create" onclick="DrawGraph();">
 
+
+</div>
+</div>
+
+
+
+
+
 </select>
-
-
-
-
-
+<div="map_button">
+<select id="year" name="oda_year">
+<option value="Y2001">2001</option>
+<option value="Y2002">2002</option>
+<option value="Y2003">2003</option>
+<input type="submit" value="YEAR" id="create" onclick="DrawMap();">
 </div>
-</div>
+
+
+
 
         <div id="map"></div>
 
