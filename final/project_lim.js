@@ -310,14 +310,21 @@ var year = new Array();
 
 var worldmap = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
-    .colors(colorbrewer.YlGnBu[9])
-    .column(year)
-    .format(format)
-    .legend(true)
-    .unitId('Country Code');
+    .column("Y2002")
+    .unitId('Country Code')
+    .legend(true);
 
-d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/GDP.csv', function(error, data) {
+d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_expectancy_at_birth_male.csv', function(error, data) {
+      
+      data.forEach(function(d) {
 
+           d.Y1961 = Number(d.Y1961)||0;
+           d.Y1962 = Number(d.Y1962)||0;
+           d.Y1963 = Number(d.Y1963)||0;
+           d.Y1964 = Number(d.Y1964)||0;
+           d.Y2000 = Number(d.Y2000)||0;
+           d.Y2002 = Number(d.Y2002)||0;
+        });
 
     d3.select('#map')
         .datum(data)
