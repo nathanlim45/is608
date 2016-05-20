@@ -72,13 +72,14 @@
     <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/js/d3.geomap.min.js"></script>
          <script type="text/javascript" src="project_lim.js"></script>
 
-
   </head>
 
-  <body>
+
+    <body onload="javascript:DrawGraph(), DrawMap()">
+     
     <div id="container">
       <div id="header">
-        <h1 style="color:#E0E0E0;">Life Expectancy</h1>
+        <font size="10" style="color:white;">Life Expectancy</font>
         <h3 style="color:white;">by Nathan Lim</h3>
         <p style="color:white;">This project was completed as part of CUNY DATA608 course.</p>
         <p style="color:white;">When you look at the graph, we can see that life expectancy is growing generally. However, the countries had civil wars or other kind of disasters are showing big dcrease of life expectancy as well as its GDP.
@@ -86,9 +87,10 @@
       </div>
       <div id="sidebar-left">
         <h2 style="color:white;">Select Countries</h2>
-        <p style="color:white;">You can choose more than one countries(or group) by using "Ctrl" key.</p>        
+        <p style="color:white;">You can choose more than one countries(or group) by using "Ctrl" key.</p>
+
+
                  <select multiple="" title="" class="" id="country" name="country" size="15">
-                 
                  <option value="Afghanistan">Afghanistan</option>
                  <option value="Albania">Albania</option>
                  <option value="Algeria">Algeria</option>
@@ -356,10 +358,12 @@
 
     <div id="content2">
                 <h2>Life Expectancy Map</h2>
+
                     <select class="1960-2014" id="YEAR" name="YEAR">
                     <input type="submit" value="YEAR" id="create" onclick="DrawMap();">
                     </select>
                     <div id="map"></div>
+
       </div>
 
 

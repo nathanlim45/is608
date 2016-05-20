@@ -6,11 +6,9 @@ $(function(){
 });
 
 
-var countries = "Cambodia"
-
 function DrawGraph(){
 
-d3.selectAll("svg").remove();
+d3.select("#chart1").selectAll("svg").remove();
 
 var countries = new Array();
 
@@ -23,10 +21,9 @@ var countries = new Array();
     });
 
 
-if (countries.length<1) {
-    alert("Select at least one country!!")}
-    else{
-
+//Initial country
+if (countries.length==0) {
+    countries.push("Cambodia","Congo, Rep.","United States", "OECD members")}
 
 
 // Set the dimensions of the canvas / graph
@@ -236,15 +233,15 @@ var format = d3.format(",.2f");
 };
 
 
-};
+
+
 
 
 
 
 function DrawMap(){
 
-
-d3.select("map").remove();
+d3.select("#map").selectAll("svg").remove();
 
 var year = new Array();
 
@@ -259,8 +256,7 @@ var new_year = "Y" + year
 
 
 
-
-var worldmap = d3.geomap.choropleth()
+var map = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
     .colors(colorbrewer.YlGnBu[9])
     .column(new_year)
@@ -272,7 +268,7 @@ d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/li
 
     d3.select('#map')
         .datum(data)
-        .call(worldmap.draw, worldmap);
+        .call(map.draw, map);
 });
 
 };
