@@ -310,7 +310,7 @@ var year = new Array();
 
 var worldmap = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
-    .column("Y2002")
+    .column("Y1960")
     .unitId('Country Code')
     .legend(true);
 
