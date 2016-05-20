@@ -50,9 +50,9 @@ var yAxis2 = d3.svg.axis().scale(y)
 
 
 // Define the line
-var net_odaline = d3.svg.line()
+var LifeExpectancyline = d3.svg.line()
     .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.net_oda); })
+    .y(function(d) { return y(d.LifeExpectancy); })
     ;
     
 
@@ -77,7 +77,7 @@ var svg = d3.select("body")
 
 
 // Get the data
-d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/oda_data_cleaned.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_expectancy_male_cleaned.csv", function(data) {
      var data=data.filter(function(row) {
 
         return countries.indexOf(row['Country.Name'])>-1;
@@ -85,13 +85,13 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/od
 
  // Cast Numeric value, handling NaN as zero
       data.forEach(function(d) {
-          d.net_oda = parseInt(d.net_oda)||0;
+          d.LifeExpectancy = parseInt(d.LifeExpectancy)||0;
         });
 
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.year; }));
-    y.domain([d3.min(data, function(d) { return d.net_oda; }), d3.max(data, function(d) { return d.net_oda; })]); 
+    y.domain([0, d3.max(data, function(d) { return d.LifeExpectancy; })]); 
 
 
 
@@ -115,7 +115,7 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/od
             .style("stroke", function() {
                 return d.color = color(d.key); })
             .style("stroke-opacity", 0.7)
-            .attr("d", net_odaline(d.values));
+            .attr("d", LifeExpectancyline(d.values));
 
 
 
