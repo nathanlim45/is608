@@ -215,8 +215,14 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/GD
         .attr("text-anchor", "end")
         .style("font-size","8px");
 
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .text("Age");
 
-
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", "translate(" + width + " ,0)")
+        .text("GDP($)");
 
 var format = d3.format(",.2f");
 

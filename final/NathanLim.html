@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>IS608</title>
+    <title>DATA608_FINAL</title>
     <style>
       #container {
         width: 940px;
@@ -15,8 +15,8 @@
         background-color: #003366;
       }
       #sidebar-left {
-        width: 270px;
-        height: 500px;
+        width: 280px;
+        height: 480px;
         padding: 20px;
         float: left;
         border: 1px solid #bcbcbc;
@@ -24,7 +24,7 @@
       }
       #content {
         padding: 10px;
-        height: 500px;
+        height: 480px;
 
       }
 
@@ -39,7 +39,7 @@
         background-color: #003366;
       }
 
-            body { font: 12px Arial;}
+            body { font: 14px Arial;}
             
             path { 
                 stroke: steelblue;
@@ -64,7 +64,7 @@
     </style>
 
 
-        <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <link href="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/css/d3.geomap.css" rel="stylesheet">
@@ -72,25 +72,24 @@
     <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/js/d3.geomap.min.js"></script>
          <script type="text/javascript" src="project_lim.js"></script>
 
-  </head>
+</head>
 
 
-    <body onload="javascript:DrawGraph(), DrawMap()">
+    <body onload="javascript:DrawGraph(), DrawMap()"><!--Draw initial graph when the page load-->
      
     <div id="container">
       <div id="header">
         <font size="10" style="color:white;">Life Expectancy</font>
         <h3 style="color:white;">by Nathan Lim</h3>
-        <p style="color:white;">This project was completed as part of CUNY DATA608 course.</p>
-        <p style="color:white;">When you look at the graph, we can see that life expectancy is growing generally. However, the countries had civil wars or other kind of disasters are showing big dcrease of life expectancy as well as its GDP.
-            Congo, Rep. Cambodia Central African Republic</p>
+
+        <p style="color:white;">Life expectancy is a measure of the average time of that humans is expected to live. This data reflects not only natural causes death, but also infant mortality and civil war. Therefore Life expectancy is used for measuring countries' development. This data is based on the year of their birth. Its resourse is The World Bank.</p>
       </div>
       <div id="sidebar-left">
         <h2 style="color:white;">Select Countries</h2>
-        <p style="color:white;">You can choose more than one countries(or group) by using "Ctrl" key.</p>
+        <p style="color:white;"><i>You can choose more than one country(or group) by using "Ctrl" key.</i></p>
 
 
-                 <select multiple="" title="" class="" id="country" name="country" size="15">
+                 <select multiple="" title="" class="" id="country" name="country" size="17">
                  <option value="Afghanistan">Afghanistan</option>
                  <option value="Albania">Albania</option>
                  <option value="Algeria">Algeria</option>
@@ -340,16 +339,14 @@
                  <option value="Zambia">Zambia</option>
                  <option value="Zimbabwe">Zimbabwe</option>
                  <input type="submit" value="Create Plot" id="create" onclick="DrawGraph();">
-        
+      <p style="color:white;">When you look at the graph, we can see that life expectancy is growing generally. However, the countries had civil wars or other kind of disasters, are showing big decrease of life expectancy as well as its GDP.</p>
 
 
-
-            <p style="color:white;">This graph showing GDP and Life Expectancy 1960 - 2014.</p>
       </div>
 
     <div id="content">
 
-        <h2 align="center">Life Expentancy and GDP</h2>
+        <h2 align="center">Life Expentancy and GDP(1960-2014)</h2>
         <div id="chart1" ></div>
 
 
@@ -358,7 +355,7 @@
 
     <div id="content2">
                 <h2>Life Expectancy Map</h2>
-
+                <p><i>For zooming in, click the map. for zooming out click background</i></p>
                     <select class="1960-2014" id="YEAR" name="YEAR">
                     <input type="submit" value="YEAR" id="create" onclick="DrawMap();">
                     </select>
@@ -369,8 +366,7 @@
 
         <div id="footer">
                 <h2 style="color:white;">Conclusion</h2>
-                <p style="color:white;">It is hard to say that life expectancy is related to the GDP only with this data. However, we can see the tendency that two factors have the same direction. Espeically, African countries had civil wars are showing the tendency clearly. Although, I didn't go far till doing statistical analysis, there seems quite clear relationships between life expectancy and GDP among those countries. Meanwhile, the case of developed countries, its life expectancy grows gradually without showing relationship with GDP. OECD countries already had near 70 life expectancy at 1960. </p>
-
+                <p style="color:white;">It is hard to say that life expectancy is related to the GDP  with only this data. However, we can see the tendency that two factors have the same direction. Espeically, African countries that had civil wars are showing the relationship clearly. Although, we didn't go further till doing statistical analysis, the relationship between life expectancy and GDP among those countries seems quite clear. Meanwhile, the life expectancy of developed countries like United States grows gradually without showing effects from GDP. At 1960's, OECD countries already had near 70 life expectancy . </p>
 
       </div>
     </div>
