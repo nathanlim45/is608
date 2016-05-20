@@ -314,7 +314,7 @@ var worldmap = d3.geomap.choropleth()
     .unitId('Country Code')
     .legend(true);
 
-d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_expectancy_at_birth_male.csv', function(error, data) {
+d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_exp_data.csv', function(error, data) {
       
       data.forEach(function(d) {
 
