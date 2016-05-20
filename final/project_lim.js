@@ -20,8 +20,8 @@ if (countries.length<1) {
 
 
 // Set the dimensions of the canvas / graph
-var margin = {top: 30, right: 40, bottom: 30, left: 50};
-var width = 600 - margin.left - margin.right;
+var margin = {top: 30, right: 50, bottom: 30, left: 40};
+var width = 620 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
 // Set the ranges

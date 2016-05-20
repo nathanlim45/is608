@@ -8,28 +8,25 @@
       #jb-container {
         width: 940px;
         margin: 0px auto;
-        padding: 20px;
         border: 1px solid #bcbcbc;
       }
       #jb-header {
         padding: 20px;
-        margin-bottom: 20px;
         border: 1px solid #bcbcbc;
+        background-color: #003366;
       }
       #jb-sidebar-left {
-        width: 240px;
+        width: 230px;
+        height: 500px;
         padding: 20px;
-        margin-right: 20px;
-        margin-bottom: 20px;
         float: left;
         border: 1px solid #bcbcbc;
+        background-color: #003366;
       }
       #jb-content {
-        width: 595px;
         padding: 20px;
-        margin-bottom: 20px;
-        float: left;
-        border: 1px solid #bcbcbc;
+        height: 500px;
+
       }
 
       #jb-footer {
@@ -60,26 +57,6 @@
                 text-align: left;
             } 
 
-             #map_button { 
-                float:left;
-                margin-top: 20px; 
-                width: 20px; 
-            } 
-
-             #header { 
-                margin-right: 10px; 
-                margin-left: 10px; 
-                width: 940px; 
-            } 
-             #navigation { 
-                padding-bottom: 25px; 
-                margin-top: 26px; 
-                margin-left: -10px; 
-                padding-right: 10px; 
-                padding-left: 10px; 
-                width: 940px; 
-            }
-
     </style>
 
 
@@ -97,10 +74,14 @@
   <body>
     <div id="jb-container">
       <div id="jb-header">
-        <h1>Life Expectancy and GDP</h1>
+        <h1 style="color:#E0E0E0;">Life Expectancy</h1>
+        <h3 style="color:white;">by Nathan Lim</h3>
+        <p style="color:white;">This project was completed as part of CUNY DATA608 course.</p>
+        <p style="color:white;">When you look at the graph, we can see that life expectancy is growing generally. However, the countries had civil wars or other kind of disasters are showing big dcrease of life expectancy as well as its GDP.
+            Congo, Rep. Cambodia Central African Republic</p>
       </div>
       <div id="jb-sidebar-left">
-        <h2>Select Countries</h2>
+        <h2 style="color:white;">Select Countries</h2>
 <select multiple="" title="" class="" id="country" name="country">
 
 <option value="Afghanistan">Afghanistan</option>
@@ -357,11 +338,11 @@
 
 
 
-<p>This graph showing GDP and Life Expectancy 1960 - 2014.</p>
+<p style="color:white;">This graph showing GDP and Life Expectancy 1960 - 2014.</p>
       </div>
       <div id="jb-content">
 
-        <h2>Content</h2>
+        <h2 align="center">Life Expentancy and GDP</h2>
         <div id="chart1" ></div>
 
 
