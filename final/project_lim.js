@@ -1,9 +1,13 @@
+
+//To write options from 1960 to 2014
 $(function(){
     var $select = $(".1960-2014");
     for (i=1960;i<=2014;i++){
         $select.append($('<option></option>').val(i).html(i))
     }
 });
+
+
 
 
 function DrawGraph(){
