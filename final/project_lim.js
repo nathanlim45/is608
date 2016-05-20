@@ -1,6 +1,5 @@
 function DrawGraph(){
 
-
 d3.selectAll("svg").remove();
 
 var countries = new Array();
@@ -22,7 +21,7 @@ if (countries.length<1) {
 
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 40, bottom: 30, left: 50};
-var width = 700 - margin.left - margin.right;
+var width = 600 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
 // Set the ranges
@@ -38,7 +37,7 @@ var xAxis = d3.svg.axis().scale(x)
 
 var yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(10)
-    .tickFormat(function(d) { return "$" + d; })
+    .tickFormat(function(d) { return "Y" + d; })
     .tickFormat(d3.format(".2s"));
 
 
@@ -63,7 +62,7 @@ var gdp_line = d3.svg.line()
 
 
 // Adds the svg canvas
-var svg = d3.select("body")
+var svg = d3.select("#chart1")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -77,7 +76,7 @@ var svg = d3.select("body")
 
 
 // Get the data
-d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_exp_data_long.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_exp_long_data.csv", function(data) {
      var data=data.filter(function(row) {
 
         return countries.indexOf(row['Country.Name'])>-1;
@@ -290,6 +289,7 @@ d3.select('#map')
 function DrawMap(){
 
 
+d3.selectAll("map").remove();
 
 var year = new Array();
 
@@ -302,15 +302,12 @@ var year = new Array();
     });
 
 
-    var format = function(d) {
-    d = d / 1000000;
-    return d3.format(',.02f')(d) + 'M';
-}
+
 
 
 var worldmap = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
-    .column("Y1960")
+    .column("Y1961")
     .unitId('Country Code')
     .legend(true);
 

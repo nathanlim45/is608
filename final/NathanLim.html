@@ -2,10 +2,43 @@
 <meta charset="utf-8">
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <title>IS608</title>
+    <style>
+      #jb-container {
+        width: 940px;
+        margin: 0px auto;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-header {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-sidebar-left {
+        width: 240px;
+        padding: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-content {
+        width: 595px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+      }
 
-    <style> 
+      #jb-footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
 
-        body { font: 12px Arial;}
+              body { font: 12px Arial;}
             
             path { 
                 stroke: steelblue;
@@ -27,17 +60,6 @@
                 text-align: left;
             } 
 
-
-
-            #nav {
-                line-height:25px;
-                background-color:#eeeeee;
-                height:90px;
-                width:250px;
-                float:left;
-                padding:5px;       
-            }
-
              #map_button { 
                 float:left;
                 margin-top: 20px; 
@@ -57,57 +79,29 @@
                 padding-left: 10px; 
                 width: 940px; 
             }
-             #navigation ul li { 
-                display: inline-block; 
-            } 
-             #content { 
-                margin-top: 58px; 
-                margin-right: 10px; 
-                float: right; 
-                width: 698px; } 
-             #sidebar { 
-                border-right-color: #e8e8e8; 
-                border-right-style: solid; 
-                border-right-width: 2px; 
-                margin-top: 58px; 
-                padding-right: 10px; 
-                margin-right: 10px; 
-                margin-left: 10px; 
-                float: left; 
-                width: 220px; 
-            } 
-             #footer { 
-                float: left; 
-                margin-top: 20px; 
-                margin-right: 10px; 
-                margin-left: 10px; 
-                clear: both; 
-                width: 940px; 
-            }
 
     </style>
 
-<h1> NET ODA by Country </h1>
-<p> This project to show ODA of each country </p>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+        <script src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <link href="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/css/d3.geomap.css" rel="stylesheet">
     <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
     <script src="https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/js/d3.geomap.min.js"></script>
+         <script type="text/javascript" src="project_lim.js"></script>
 
 
-    <script type="text/javascript" src="project_lim.js"></script>
+  </head>
 
-
-</head>
-
-
-<body>
-
-<div id="navigation">
-<div id="nav">
-<select multiple="" title="" class="" id="country" name="oda_country">
+  <body>
+    <div id="jb-container">
+      <div id="jb-header">
+        <h1>Life Expectancy and GDP</h1>
+      </div>
+      <div id="jb-sidebar-left">
+        <h2>Select Countries</h2>
+<select multiple="" title="" class="" id="country" name="country">
 
 <option value="Afghanistan">Afghanistan</option>
 <option value="Albania">Albania</option>
@@ -358,36 +352,36 @@
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
 <input type="submit" value="Create Plot" id="create" onclick="DrawGraph();">
-
-
-</div>
-</div>
+        
 
 
 
 
+<p>This graph showing GDP and Life Expectancy 1960 - 2014.</p>
+      </div>
+      <div id="jb-content">
 
-</select>
-<div="map_button">
-<select id="year" name="oda_year">
-<option value="Y1961">1961</option>
-<option value="Y1962">1962</option>
-<option value="Y1963">1963</option>
-<option value="Y1964">1964</option>
-<option value="Y2000">2000</option>
-<option value="Y2002">Y2002</option>
-<input type="submit" value="YEAR" id="create" onclick="DrawMap();">
-</div>
+        <h2>Content</h2>
+        <div id="chart1" ></div>
 
 
+      </div>
+      <div id="jb-sidebar-right">
 
-<div id="map"></div>
-
-
-
-
-</body>
-
-
+      </div>
+      <div id="jb-footer">
+                <h2>Life Expectancy Map</h2>
+                    <select id="year" name="oda_year">
+                    <option value="Y1961">1961</option>
+                    <option value="Y1962">1962</option>
+                    <option value="Y1963">1963</option>
+                    <option value="Y1964">1964</option>
+                    <option value="Y2000">2000</option>
+                    <option value="Y2002">Y2002</option>
+                    <input type="submit" value="YEAR" id="create" onclick="DrawMap();">
+                    <div id="map"></div>
+      </div>
+    </div>
+  </body>
 </html>
 
