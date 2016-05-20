@@ -1,3 +1,13 @@
+$(function(){
+    var $select = $(".1960-2014");
+    for (i=1960;i<=2014;i++){
+        $select.append($('<option></option>').val(i).html(i))
+    }
+});
+
+
+var countries = "Cambodia"
+
 function DrawGraph(){
 
 d3.selectAll("svg").remove();
@@ -20,8 +30,8 @@ if (countries.length<1) {
 
 
 // Set the dimensions of the canvas / graph
-var margin = {top: 30, right: 50, bottom: 30, left: 40};
-var width = 620 - margin.left - margin.right;
+var margin = {top: 30, right: 40, bottom: 30, left: 70};
+var width = 560 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
 // Set the ranges
@@ -37,13 +47,11 @@ var xAxis = d3.svg.axis().scale(x)
 
 var yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(10)
-    .tickFormat(function(d) { return "Y" + d; })
-    .tickFormat(d3.format(".2s"));
+    .tickFormat(function(d) { return d + "y"; });
 
 
 var yAxis2 = d3.svg.axis().scale(y)
     .orient("right").ticks(10)
-    .tickFormat(function(d) { return "$" + d; })
     .tickFormat(d3.format(".2s"));
 
 
@@ -212,47 +220,6 @@ d3.csv("https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/GD
 
 
 
-/*
-
-//Grid line
-
-svg.selectAll(".hline").data(d3.range(9)).enter()
-    .append("line")
-    .attr("y1", function (d) {
-    return d * 26 + 6;
-})
-    .attr("y2", function (d) {
-    return d * 26 + 6;
-})
-    .attr("x1", function (d) {
-    return 0;
-})
-    .attr("x2", function (d) {
-    return width;
-})
-    .style("stroke", "#eee")
-;
-
-
-
-//vertical lines
-svg.selectAll(".vline").data(d3.range(21)).enter()
-    .append("line")
-    .attr("x1", function (d) {
-    return d * (width / 10);
-})
-    .attr("x2", function (d) {
-    return d * (width / 10);
-})
-    .attr("y1", function (d) {
-    return 0;
-})
-    .attr("y2", function (d) {
-    return height;
-})
-    .style("stroke", "#eee");
-*/
-
 
 var format = d3.format(",.2f");
 
@@ -263,18 +230,6 @@ var format = d3.format(",.2f");
         .call(yAxis2)
 
 });
-
-
-/*
-var map = d3.geomap()
-    .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json');
-
-d3.select('#map')
-    .call(map.draw, map);
-
-*/
-
-
 
 
 
@@ -289,7 +244,7 @@ d3.select('#map')
 function DrawMap(){
 
 
-d3.selectAll("map").remove();
+d3.select("map").remove();
 
 var year = new Array();
 
@@ -300,28 +255,20 @@ var year = new Array();
         });
 
     });
-
+var new_year = "Y" + year
 
 
 
 
 var worldmap = d3.geomap.choropleth()
     .geofile('https://rawgit.com/nathanlim45/is608/master/final/d3-geomap/topojson/world/countries.json')
-    .column("Y1961")
+    .colors(colorbrewer.YlGnBu[9])
+    .column(new_year)
     .unitId('Country Code')
     .legend(true);
 
 d3.csv('https://raw.githubusercontent.com/nathanlim45/is608/master/final/data/life_exp_data.csv', function(error, data) {
       
-      data.forEach(function(d) {
-
-           d.Y1961 = Number(d.Y1961)||0;
-           d.Y1962 = Number(d.Y1962)||0;
-           d.Y1963 = Number(d.Y1963)||0;
-           d.Y1964 = Number(d.Y1964)||0;
-           d.Y2000 = Number(d.Y2000)||0;
-           d.Y2002 = Number(d.Y2002)||0;
-        });
 
     d3.select('#map')
         .datum(data)
